@@ -1,0 +1,24 @@
+{
+  "name": "advwebappprojectwork",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "cd server && npm start",
+    "dev:client": "cd client && npm start",
+    "dev:server": "cd server && npm run dev",
+    "preinstall": "cd server && npm install",
+    "install": "cd client && npm install",
+    "build": "cd client && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SamuliLento/AdvWebAppProjectWork.git"
+  },
+  "author": "Samuli Lento",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SamuliLento/AdvWebAppProjectWork/issues"
+  },
+  "homepage": "https://github.com/SamuliLento/AdvWebAppProjectWork#readme"
+}
