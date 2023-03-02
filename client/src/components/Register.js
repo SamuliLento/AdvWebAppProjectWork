@@ -15,6 +15,7 @@ function Register () {
             body: JSON.stringify(userData),
             mode: "cors"
         })
+            .then(response => response.json());
     }
 
     const handleChange = (e) => {

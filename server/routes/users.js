@@ -19,12 +19,10 @@ router.get('/', function(req, res, next) {
 router.post('/login',
     upload.none(),
     (req, res, next) => {
-        console.log(req.body);
-
-        User.findOne({username: req.body.password}, (err, user) => {
+        User.findOne({username: req.body.username}, (err, user) => {
             if (err) throw err;
             if (!user) {
-                return res.status(403),json({message:"Login failed"});
+                return res.status(403).json({message:"Login failed"});
             } else {
                 bcrypt.compare(req.body.password, user.password, (err, isMatch) => {
                     if (err) throw err;
@@ -33,19 +31,20 @@ router.post('/login',
                             id: user._id,
                             username: user.username
                         }
+                        jwt.sign(
+                            jwtPayload,
+                            process.env.SECRET,
+                            {
+                                expiresIn: 120
+                            },
+                            (err, token) => {
+                                console.log(err);
+                                res.json({success: true, token});
+                            }
+                        );
+                    } else {
+                        return res.status(403).json({message:"Login failed"});
                     }
-                    console.log(process.env.SECRET)
-                    jwt.sign(
-                        jwtPayload,
-                        process.env.SECRET,
-                        {
-                            expiresIn: 120
-                        },
-                        (err, token) => {
-                            console.log(err)
-                            res.json({success: true, token});
-                        }
-                    );
                 });
             }
         });
@@ -71,16 +70,13 @@ router.post('/register',
                 bcrypt.genSalt(10, (err, salt) => {
                     bcrypt.hash(req.body.password, salt, (err, hash) => {
                         if (err) throw err;
-                        User.create(
-                            {
+                        new User({
                                 username: req.body.username,
                                 password: hash
-                            },
-                            (err, ok) => {
-                                if (err) throw err;
-                                return res.redirect("/users/login");
-                            }
-                        );
+                        }).save((err) => {
+                            if (err) return next(err);
+                            return res.send("ok");
+                        });
                     });
                 });
             }
