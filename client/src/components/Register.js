@@ -7,7 +7,7 @@ function Register () {
     const submit = (e) => {
         e.preventDefault();
         
-        fetch("/users/register", {
+        fetch("/api/users/register", {
             method: "POST",
             headers: {
                 "Content-type": "application/json"
@@ -26,7 +26,7 @@ function Register () {
         <div>
             <h2>Register</h2>
             <form onSubmit={submit} onChange={handleChange}>
-                <input id="username" type="text"></input>
+                <input id="username" type="string"></input>
                 <input id="password" type="password"></input>
                 <input id="submit" type="submit"></input>
             </form>

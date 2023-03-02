@@ -65,7 +65,7 @@ router.post('/register',
                 throw err;
             }
             if (user) {
-                return res.status(403).json({username: "Username already in use."});
+                return res.status(403).json({message: "Username already in use."});
             } else {
                 bcrypt.genSalt(10, (err, salt) => {
                     bcrypt.hash(req.body.password, salt, (err, hash) => {
@@ -75,7 +75,7 @@ router.post('/register',
                                 password: hash
                         }).save((err) => {
                             if (err) return next(err);
-                            return res.send("ok");
+                            return res.status(200).json({message:"ok"});
                         });
                     });
                 });
