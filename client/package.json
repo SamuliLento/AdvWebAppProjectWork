@@ -39,6 +39,6 @@
   },
   "options": {
     "allowedHosts": ["localhost", ".localhost"],
-    "proxy": "https://localhost:1234"
+    "proxy": "http://localhost:1234"
   }
 }
