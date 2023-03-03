@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function Login ({setJwt, jwt, setUser}) {
+function Login ({jwt, setJwt, setUser}) {
 
     const [userData, setUserData] = useState ({});
 
@@ -19,8 +19,8 @@ function Login ({setJwt, jwt, setUser}) {
             .then(data => {
                 console.log(data)
                 if(data.token) {
-                    setJwt(data.token)
-                    setUser(JSON.parse(Buffer.from(data.token.split(".")[1], "base64").toString()))
+                    setJwt(data.token);
+                    setUser(JSON.parse(Buffer.from(data.token.split(".")[1], "base64").toString()));
                 }
             })
     }
@@ -32,11 +32,16 @@ function Login ({setJwt, jwt, setUser}) {
     return (
         <div>
             <h2>Login</h2>
-            <form onSubmit={submit} onChange={handleChange}>
-                <input id="username" type="text"></input>
-                <input id="password" type="password"></input>
-                <input id="submit" type="submit"></input>
-            </form>
+            {!jwt && 
+                <form onSubmit={submit} onChange={handleChange}>
+                    <input id="username" type="string"></input>
+                    <input id="password" type="password"></input>
+                    <input id="submit" type="submit"></input>
+                </form>
+            }
+            {jwt &&
+                <p>You are already logged in</p>
+            }
         </div>
     )
 }

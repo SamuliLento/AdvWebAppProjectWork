@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function Register () {
+function Register ({jwt}) {
 
     const [userData, setUserData] = useState ({});
 
@@ -25,11 +25,16 @@ function Register () {
     return (
         <div>
             <h2>Register</h2>
-            <form onSubmit={submit} onChange={handleChange}>
-                <input id="username" type="string"></input>
-                <input id="password" type="password"></input>
-                <input id="submit" type="submit"></input>
-            </form>
+            {!jwt && 
+                <form onSubmit={submit} onChange={handleChange}>
+                    <input id="username" type="string"></input>
+                    <input id="password" type="password"></input>
+                    <input id="submit" type="submit"></input>
+                </form>
+            }
+            {jwt &&
+                <p>You are already logged in</p>
+            }
         </div>
     )
 }

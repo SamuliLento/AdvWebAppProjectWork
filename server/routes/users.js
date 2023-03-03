@@ -70,13 +70,14 @@ router.post('/register',
                 bcrypt.genSalt(10, (err, salt) => {
                     bcrypt.hash(req.body.password, salt, (err, hash) => {
                         if (err) throw err;
-                        new User({
+                        User.create({
                                 username: req.body.username,
                                 password: hash
-                        }).save((err) => {
-                            if (err) return next(err);
-                            return res.status(200).json({message:"ok"});
-                        });
+                            },
+                            (err, ok) => {
+                                if (err) throw err;
+                            }
+                        )
                     });
                 });
             }
