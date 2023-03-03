@@ -10,11 +10,6 @@ const multer = require("multer");
 const storage = multer.memoryStorage();
 const upload = multer({storage});
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-    res.send('respond with a resource');
-});
-
 /* Login with existing user */
 router.post('/login',
     upload.none(),

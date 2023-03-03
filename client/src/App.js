@@ -1,5 +1,5 @@
 import './App.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import Header from './components/Header';
 import Homepage from './components/Homepage';
@@ -11,6 +11,18 @@ function App() {
 
     const [jwt, setJwt] = useState("");
     const [user, setUser] = useState({});
+
+    /* Load jsonwebtoken from local storage */
+    useEffect(() => {
+        if (window.localStorage.getItem('jwt')) {
+            setJwt(window.localStorage.getItem('jwt'));
+        }
+    }, []);
+
+    /* Save jsonwebtoken to local storage */
+    useEffect(() => {
+        window.localStorage.setItem('jwt', jwt);
+    }, [jwt]);
 
     return (
         <Router>
