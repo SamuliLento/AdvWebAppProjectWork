@@ -35,8 +35,8 @@ function Login ({jwt, setJwt, setUser}) {
             <h2>Login</h2>
             {!jwt && 
                 <form onSubmit={submit} onChange={handleChange}>
-                    <input id="username" type="string"></input>
-                    <input id="password" type="password"></input>
+                    <input id="username" type="string" placeholder="username"></input>
+                    <input id="password" type="password" placeholder="password"></input>
                     <input id="submit" type="submit"></input>
                 </form>
             }
