@@ -1,5 +1,5 @@
 import './App.css';
-import { Box } from '@mui/system';
+import Box from '@mui/material/Box';
 
 import { useState, useEffect } from 'react';
 import { Buffer } from "buffer";
@@ -32,7 +32,11 @@ function App() {
 
     return (
         <Router>
-            <Box className="App" sx={{ bgcolor: '#cfe8fc' }}>
+            <Box className="App"
+                sx={{
+                    padding: 2,
+                    bgcolor: '#cfe8fc'
+                }}>
                 <Header jwt={jwt} setJwt={setJwt} setUser={setUser}/>
                 <h2>{jwt ? `Welcome ${user.username}!` : ""}</h2>
                 <Routes>

@@ -29,7 +29,7 @@ function Header ({jwt, setJwt, setUser}) {
                     </Button>
                 }
                 {jwt &&
-                    <Button edge="start" color="inherit" onClick={()=> logout()}>
+                    <Button edge="end" color="inherit" onClick={()=> logout()}>
                         Logout
                     </Button>
                 }
@@ -38,4 +38,4 @@ function Header ({jwt, setJwt, setUser}) {
     )
 }
 
-export default Header
+export default Header;

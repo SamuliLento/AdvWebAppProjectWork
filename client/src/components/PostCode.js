@@ -1,3 +1,5 @@
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 
@@ -7,8 +9,9 @@ function PostCode ({user}) {
 
     const [codeData, setCodeData] = useState ({});
 
-    /* Saves new code snippet to database */
-    const submit = () => {
+    /* Post new code snippet */
+    const submit = (e) => {
+        e.preventDefault();
         
         fetch("/api/codes/post", {
             method: "POST",
@@ -27,15 +30,15 @@ function PostCode ({user}) {
     }
 
     return (
-        <div>
-            <form onChange={handleChange}>
-                <TextField id="title" label="Title" variant="outlined"></TextField>
-                <TextField id="content" label="Code" variant="outlined"></TextField>
-                <Button id="submit" onClick={()=> submit()}>Submit</Button>
-            </form>
-        </div>
+        <Box align="left" sx={{ padding: 1 }}>
+            <Typography variant="h5">Post code snippets</Typography>
+            <Box component="form" onSubmit={submit} onChange={handleChange} sx={{ padding: 1 }}>
+                <TextField id="title" type="string" label="Title" variant="outlined"></TextField>
+                <TextField id="content" type="string" label="Code" variant="outlined"></TextField>
+                <Button id="submit" type="submit" variant="contained">Post</Button>
+            </Box>
+        </Box>
     )
 }
-
 
 export default PostCode;

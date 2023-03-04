@@ -3,7 +3,7 @@ var router = express.Router();
 const mongoose = require("mongoose");
 const Code = require("../models/Code");
 
-/* Get all code snippets */
+/* Get all code snippets from database */
 router.get('/', (req, res, next) => {
     Code.find({}, (err, codes) => {
         if (err) return next(err);
@@ -15,7 +15,7 @@ router.get('/', (req, res, next) => {
     });
 });
 
-/* Get code snippet by title */
+/* Get code snippet by title from database */
 router.get('/:title', (req, res, next) => {
     Code.findOne({ title: req.params.title }, (err, code) => {
         if (err) return next(err);
@@ -27,7 +27,7 @@ router.get('/:title', (req, res, next) => {
     });
 });
 
-/* Post new code snippet */
+/* Saves new code snippet to database */
 router.post('/post', (req, res, next) => {
     if (req.body.title && req.body.content) {
         Code.findOne({ title: req.body.title }, (err, title) => {

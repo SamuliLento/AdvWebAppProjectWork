@@ -3,7 +3,7 @@ var router = express.Router();
 const mongoose = require("mongoose");
 const Comment = require("../models/Comment");
 
-/* Get all comments on a single code snippet */
+/* Get all comments from database on a single code snippet */
 router.get('/:title', (req, res, next) => {
     Comment.find({ title: req.params.title }, (err, comments) => {
         if (err) return next(err);
@@ -15,7 +15,7 @@ router.get('/:title', (req, res, next) => {
     });
 });
 
-/* Post new comment */
+/* Saves new comment to database */
 router.post('/post', (req, res, next) => {
     if (req.body.content) {
         new Comment({

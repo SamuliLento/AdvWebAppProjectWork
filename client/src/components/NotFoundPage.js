@@ -1,8 +1,11 @@
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+
 function NotFoundPage () {
     return (
-        <div>
-            <h1>404: This is not the webpage you are looking for</h1>
-        </div>
+        <Box>
+            <Typography>404: This is not the webpage you are looking for!</Typography>
+        </Box>
     )
 }
 
