@@ -8,6 +8,7 @@ var mongoose = require("mongoose");
 var cors = require('cors');
 
 var usersRouter = require('./routes/users');
+var codesRouter = require('./routes/codes');
 
 var app = express();
 
@@ -23,10 +24,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 app.use('/api/users', usersRouter);
+app.use('/api/codes', codesRouter);
 
 if (process.env.NODE_ENV === "production") {
     app.use(express.static(path.resolve("..", "client", "build")));
-    app.get("*", (req,res) => 
+    app.get("*", (req, res) => 
         res.sendFile(path.resolve("..", "client", "build", "index.html"))
     );
 } else if (process.env.NODE_ENV === "development") {

@@ -1,5 +1,6 @@
 import './App.css';
 import { useState, useEffect } from 'react';
+import { Buffer } from "buffer";
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import Header from './components/Header';
 import Homepage from './components/Homepage';
@@ -12,10 +13,11 @@ function App() {
     const [jwt, setJwt] = useState("");
     const [user, setUser] = useState({});
 
-    /* Load jsonwebtoken from local storage */
+    /* Load jsonwebtoken and user from local storage */
     useEffect(() => {
         if (window.localStorage.getItem('jwt')) {
             setJwt(window.localStorage.getItem('jwt'));
+            setUser(JSON.parse(Buffer.from(window.localStorage.getItem('jwt').split(".")[1], "base64").toString()));
         }
     }, []);
 
@@ -28,6 +30,7 @@ function App() {
         <Router>
             <div className="App">
                 <Header jwt={jwt} setJwt={setJwt}/>
+                <h2>{jwt ? `Welcome ${user.username}!` : ""}</h2>
                 <Routes>
                     <Route path="/" element={ <Homepage /> }/>
                     <Route path="/register" element={ <Register jwt={jwt}/> }/>

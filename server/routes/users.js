@@ -17,7 +17,7 @@ router.post('/login',
         User.findOne({username: req.body.username}, (err, user) => {
             if (err) throw err;
             if (!user) {
-                return res.status(403).json({message:"Login failed"});
+                return res.status(403).json({message:"Login failed."});
             } else {
                 bcrypt.compare(req.body.password, user.password, (err, isMatch) => {
                     if (err) throw err;
@@ -38,7 +38,7 @@ router.post('/login',
                             }
                         );
                     } else {
-                        return res.status(403).json({message:"Login failed"});
+                        return res.status(403).json({message:"Login failed."});
                     }
                 });
             }
