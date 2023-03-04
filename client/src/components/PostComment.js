@@ -3,39 +3,37 @@ import Button from '@mui/material/Button';
 
 import { useState } from "react";
 
-function PostCode ({user}) {
+function PostComment ({title, user}) {
 
-    const [codeData, setCodeData] = useState ({});
+    const [commentData, setCommentData] = useState ({});
 
-    /* Saves new code snippet to database */
-    const submit = () => {
+    const submit = (e) => {
         
-        fetch("/api/codes/post", {
+        fetch("/api/comments/post", {
             method: "POST",
             headers: {
                 "Content-type": "application/json"
             },
-            body: JSON.stringify(codeData),
+            body: JSON.stringify(commentData),
             mode: "cors"
         })
             .then(response => response.json());
     }
 
-    /* Modifies codeData when user writes on textfield */
     const handleChange = (e) => {
-        setCodeData({...codeData, [e.target.id]: e.target.value, user: user.username});
+        setCommentData({...commentData, [e.target.id]: e.target.value, title: title, user: user.username});
     }
 
     return (
         <div>
             <form onChange={handleChange}>
-                <TextField id="title" label="Title" variant="outlined"></TextField>
-                <TextField id="content" label="Code" variant="outlined"></TextField>
+                <TextField id="content" label="Comment" variant="outlined"></TextField>
                 <Button id="submit" onClick={()=> submit()}>Submit</Button>
             </form>
         </div>
     )
+
 }
 
 
-export default PostCode;
+export default PostComment;

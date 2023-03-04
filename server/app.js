@@ -9,6 +9,7 @@ var cors = require('cors');
 
 var usersRouter = require('./routes/users');
 var codesRouter = require('./routes/codes');
+var commentsRouter = require('./routes/comments');
 
 var app = express();
 
@@ -25,6 +26,7 @@ app.use(cookieParser());
 
 app.use('/api/users', usersRouter);
 app.use('/api/codes', codesRouter);
+app.use('/api/comments', commentsRouter);
 
 if (process.env.NODE_ENV === "production") {
     app.use(express.static(path.resolve("..", "client", "build")));

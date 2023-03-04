@@ -33,11 +33,11 @@ function App() {
     return (
         <Router>
             <Box className="App" sx={{ bgcolor: '#cfe8fc' }}>
-                <Header jwt={jwt} setJwt={setJwt}/>
+                <Header jwt={jwt} setJwt={setJwt} setUser={setUser}/>
                 <h2>{jwt ? `Welcome ${user.username}!` : ""}</h2>
                 <Routes>
-                    <Route path="/" element={ <Homepage jwt={jwt} user={user}/> }/>
-                    <Route path="/codes/:title" element={ <Code /> }/>
+                    <Route path="/" element={ <Homepage user={user}/> }/>
+                    <Route path="/codes/:title" element={ <Code user={user}/> }/>
                     <Route path="/register" element={ <Register jwt={jwt}/> }/>
                     <Route path="/login" element= { <Login jwt={jwt} setJwt={setJwt} setUser={setUser}/> }/>
                     <Route path="*" element={ <NotFoundPage /> }/>

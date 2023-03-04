@@ -1,13 +1,13 @@
 import Codes from "./Codes";
 import PostCode from "./PostCode";
 
-function Homepage ({jwt, user}) {
+function Homepage ({user}) {
 
     return (
         <div>
             <h1>Home</h1>
             <Codes />
-            {jwt && 
+            {user.username && 
                 <PostCode user={user}/>
             }
         </div>

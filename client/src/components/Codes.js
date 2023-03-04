@@ -10,6 +10,7 @@ function Codes () {
 
     const [codes, setCodes] = useState([]);
 
+    /* Gets all code snippets from database on page load */
     useEffect(() => {
         fetch("/api/codes")
             .then(response => response.json())

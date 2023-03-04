@@ -4,10 +4,12 @@ import Button from '@mui/material/Button';
 
 import { Link } from 'react-router-dom';
 
-function Header ({jwt, setJwt}) {
+function Header ({jwt, setJwt, setUser}) {
 
+    /* Removes jsonwebtoken and user */
     const logout = () => {
         setJwt("");
+        setUser({});
     }
 
     return (
