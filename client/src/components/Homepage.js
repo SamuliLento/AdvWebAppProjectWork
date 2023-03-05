@@ -7,7 +7,7 @@ import PostCode from "./PostCode";
 function Homepage ({user}) {
 
     return (
-        <Box>
+        <Box sx={{ padding: 2 }}>
             <Typography variant="h3">Home</Typography>
             <Codes />
             {user.username ? 

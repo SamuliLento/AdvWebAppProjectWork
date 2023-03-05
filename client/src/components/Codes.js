@@ -25,7 +25,7 @@ function Codes () {
             <List>
                 {codes.map((code) => (
                     <ListItem key={code._id}>
-                        <Box sx={{ padding: 1, border: 1, width: 1 }}>
+                        <Box sx={{ padding: 1, border: "1px solid #0288d1", width: 1 }}>
                             <Button component={Link} to={"/codes/" + code.title} variant="outlined">{code.title}</Button>
                             <ListItemText primary={code.user + ":"} secondary={code.content}/>
                         </Box>

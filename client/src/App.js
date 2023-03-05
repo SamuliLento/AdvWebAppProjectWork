@@ -35,10 +35,9 @@ function App() {
             <Box className="App"
                 sx={{
                     padding: 2,
-                    bgcolor: '#cfe8fc'
+                    bgcolor: 'paper'
                 }}>
-                <Header jwt={jwt} setJwt={setJwt} setUser={setUser}/>
-                <h2>{jwt ? `Welcome ${user.username}!` : ""}</h2>
+                <Header jwt={jwt} setJwt={setJwt} user={user} setUser={setUser}/>
                 <Routes>
                     <Route path="/" element={ <Homepage user={user}/> }/>
                     <Route path="/codes/:title" element={ <Code user={user}/> }/>

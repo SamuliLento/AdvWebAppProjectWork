@@ -1,0 +1,60 @@
+CT30A3204 Advanced Web Applications - Project work - Samuli Lento 0510807
+
+
+Technology choices
+
+    Backend is implemented with Node.js using express.
+    For database I chose MongoDB and it is used with mongoose.
+    Authentication is done using jsonwebtoken and storing it in local storage.
+    Frontend is implemented with React in combination with Material UI components.
+
+
+Installation guidelines
+
+    Application requires installed MongoDB.
+    Open the project folder in Visual Studio Code.
+    In VS Code open a new terminal.
+    First install node_modules by running "npm install" in root folder.
+    Then start the server using one of the following commands in root folder:
+
+        for Windows powershell:     $env:NODE_ENV="development"; npm run dev:server
+        for Linux:                  NODE_ENV=development npm run dev:server
+
+    Open a new terminal for frontend and run "npm run dev:client" in root folder.
+    The React app will open and you can start using the application.
+
+
+User manual
+
+    Homepage
+
+        At the top of the page is an Appbar with links to different pages.
+        In the homepage you can see all code snippets.
+
+        Code snippets
+
+            Logged in users can post new code snippets.
+            Clicking the title of a code snippet will take you to a page showing the code snippet
+            and all comments of that code snippet.
+            Logged in users can post new comments on a code snippet in it's page.
+
+    Register
+
+        In the register page you can create new account.
+        Type in username and password in the textfields and click the register button.
+
+    Login
+
+        In the login page you can login by using an account created in the register page.
+        Type in username and password in the textfields and click the login button.
+
+    Logout
+
+        When you are logged in there will be a logout button in the Appbar.
+        Clicking it will log you out and then you can register new accounts or login again.
+
+
+Implemented features
+
+    - Basic features - 25 points
+    - Utilization of a frontside framework (React) - 5 points
