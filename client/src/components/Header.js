@@ -33,9 +33,9 @@ function Header ({jwt, setJwt, user, setUser}) {
                         </Button>
                     }
                     {jwt &&
-                        <Button color="inherit">
+                        <Typography variant="button" sx={{ padding: 1 }}>
                             Welcome {user.username}
-                        </Button>
+                        </Typography>
                     }
                     {jwt &&
                         <Button color="inherit" onClick={()=> logout()}>
