@@ -23,7 +23,7 @@ function Comments ({title}) {
             <List>
                 {comments.map((comment) => (
                     <ListItem key={comment._id}>
-                        <Box sx={{ padding: 1, border: 1 , width: 0.3 }}>
+                        <Box sx={{ padding: 1, border: "1px solid #0288d1" , width: 0.3 }}>
                             <ListItemText primary={comment.user + ":"} secondary={comment.content}/>
                         </Box>
                     </ListItem>
