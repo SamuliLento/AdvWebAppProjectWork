@@ -58,3 +58,5 @@ Implemented features
 
     - Basic features - 25 points
     - Utilization of a frontside framework (React) - 5 points
+
+    - Total points 30
